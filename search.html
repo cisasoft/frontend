@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS全文html全文检索模拟Ctrl+f功能</title>
+    <script type="application/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="application/javascript" src="js/lunr.min.js"></script>
+    <script type="application/javascript">
+        var idx = lunr(function () {
+            this.field('title', {boost: 10});
+            this.field('body');
+            this.ref('id')
+        });
+
+        var doc = {
+            "title": "Twelfth-Night",
+            "body": "If music be the food of love, play on: Give me excess of it…",
+            "author": "William Shakespeare",
+            "id": 1
+        };
+
+        idx.add(doc);
+
+        $(function () {
+            var obj = idx.search("love");
+            $("#demo").html(JSON.stringify(obj));
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<p id="demo"></p>
+
+</body>
+</html>

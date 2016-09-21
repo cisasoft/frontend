@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取json文件中的数据</title>
+    <script type="application/javascript" src="js/jquery-3.1.0.min.js"></script>
+    <script type="application/javascript">
+        function initJsonData() {
+            var json_file = "en-conf.json";
+            $.getJSON(json_file, function (data) {
+
+            });
+        }
+
+        $(function () {
+            initJsonData();
+        });
+    </script>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th class="test1 en">邮件</th>
+        <th class="test1 en">姓氏</th>
+    </tr>
+    <tr>
+        <td>January</td>
+        <td>$100</td>
+    </tr>
+</table>
+</body>
+</html>
