@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>genIndex Json</title>
+    <script type="application/javascript" src="../jquery-3.1.0.min.js"></script>
+    <script type="application/javascript" src="../lunr.js"></script>
+    <script type="application/javascript" src="../preGenerator/realIndex.js"></script>
+    <script type="application/javascript" src="../preGenerator/realContent.js"></script>
+    <script type="application/javascript" src="../jsonsql-0.1.js"></script>
+</head>
+<body>
+<p id="demo"></p>
+<p id="file"></p>
+
+<div id = "result">
+
+</div>
+
+</body>
+<script type="application/javascript">
+    $(function () {
+        var idx = lunr.Index.load(serialisedData);
+        var obj = idx.search("Term Deep");
+        $("#demo").html(JSON.stringify(obj));
+//        $("#file").html(JSON.stringify(jsonsql.query("select * from realContent where (id == '107.pdf')",realContent)));
+
+        var packJson = jsonsql.query("select * from realContent where (id == '107.pdf' || id == '104.pdf')",realContent);
+        for(var i = 0; i < packJson.length; i++){
+            //alert(packJson[i].title + " " + packJson[i].author);
+            $("#result").append(packJson[i].title+"<br/>"+packJson[i].content+"<br/>"+packJson[i].author+"<br/><a href='../pdf/"+packJson[i].id+"' target='_blank'>preview</a>"+"<br/><br/>");
+        }
+    });
+</script>
+</html>

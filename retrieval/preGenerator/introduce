@@ -1,0 +1,4 @@
+为提高检索速度的检索信息预处理步骤
+1用java代码生成genIndex格式的数据
+2运行genIndex将页面内容保存为realIndex
+3真实页面直接引用静态缓存realIndex
